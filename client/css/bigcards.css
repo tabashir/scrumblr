@@ -73,6 +73,12 @@
 	
 }
 
+.filler {
+    margin-right: 34px;
+    margin-bottom: 42px;
+    margin-left: 25px;
+}
+
 .stickertarget {
 	position: absolute;
 }

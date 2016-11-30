@@ -1,90 +1,87 @@
-- if (locals.demo)
-	div.notice-bar this is a demo board. to make a private board, go to <a href="http://scrumblr.ca">scrumblr.ca</a>
+extends layout
 
-script.
-	(function($) {
-		$(document).ready(function() {
-			var mySlidebars = new $.slidebars();
-			$('#slideopen i').on('click', function() {
-				mySlidebars.slidebars.toggle('left');
-			});
-			$('.sb-slidebar').on('click', function() {
-				mySlidebars.slidebars.close();
-			});
-			$('#jiraSync').on('click', function() {
-				$.blockUI({ 
-					message: "Syncing with jira",
-					css: { 
-						border: 'none', 
-						padding: '15px', 
-						backgroundColor: '#000', 
-						'-webkit-border-radius': '10px', 
-						'-moz-border-radius': '10px', 
-						opacity: .5, 
-						color: '#fff',
-						fontSize: '20px'
-					}
-				});
-				
-				$.ajax("/jira/sprint/#{roomId}", {
-					success: function(data) {
-						$.unblockUI();
-						sendAction('initializeMe', null);
-					}
-				});
-			});
-			
-			$.ajax("/scrumblr/board/list", {
-					success: function(data) {
-						var listContainer = $("#menuBoardList");
-						for (var i = 0; i < data.length; i++) {
-							var boardKey = data[i];
-							listContainer.append($("<li><a href='" + boardKey + "'>" + boardKey + "</a></li>"));
-						}
-					}
-			});
-			
-		});
-	}) (jQuery);
-	
+block body
+    - if (locals.demo)
+        div.notice-bar this is a demo board. to make a private board, go to <a href="http://scrumblr.ca">scrumblr.ca</a>
 
-include cardselector
-	
-div.sb-slidebar.sb-left
-	h1 &nbsp;<a href="http://scrumblr.ca">scrumblr</a> by <a href="http://aliasaria.ca">aliasaria</a><br/><br/>
-	
-	h1 &nbsp;&nbsp;&nbsp;Options:
-	ul.sb-menu
-		li <a id="jiraSync" href="#">Sync with Jira</a>
-		
-	h1 &nbsp;&nbsp;&nbsp;List of boards:
-	ul#menuBoardList.sb-menu
+    script.
+        (function($) {
+            $(document).ready(function() {
+                var mySlidebars = new $.slidebars();
+                $('#slideopen i').on('click', function() {
+                    mySlidebars.slidebars.toggle('left');
+                });
+                $('.sb-slidebar').on('click', function() {
+                    mySlidebars.slidebars.close();
+                });
+                $('#jiraSync').on('click', function() {
+                    $.blockUI({ 
+                        message: "Syncing with jira",
+                        css: { 
+                            border: 'none', 
+                            padding: '15px', 
+                            backgroundColor: '#000', 
+                            '-webkit-border-radius': '10px', 
+                            '-moz-border-radius': '10px', 
+                            opacity: .5, 
+                            color: '#fff',
+                            fontSize: '20px'
+                        }
+                    });
+            
+                    $.ajax("/jira/sprint/#{roomId}", {
+                        success: function(data) {
+                            $.unblockUI();
+                            sendAction('initializeMe', null);
+                        }
+                    });
+                });
+        
+                $.ajax("/scrumblr/board/list", {
+                    success: function(data) {
+                        var listContainer = $("#menuBoardList");
+                        for (var i = 0; i < data.length; i++) {
+                            var boardKey = data[i];
+                            listContainer.append($("<li><a href='" + boardKey + "'>" + boardKey + "</a></li>"));
+                        }
+                    }
+                });
+        
+            });
+        }) (jQuery);
 
-div#sb-site
 
-	div#slideopen
-		i.fa.fa-reorder
+    include cardselector
 
-	div.board-outline
-		div#board
-			div#board-doodles
-			image#marker(src='/images/marker.png')
-			image#eraser(src='/images/eraser.png')
-			
-			table#board-table.board-table
-				tr
-					td#icon-col(width='1%')
-						image#add-col.col-icon(width='20', height='20', src='/images/icons/iconic/raster/black/plus_alt_32x32.png')
-						image#delete-col.col-icon(width='20', height='20', src='/images/icons/iconic/raster/black/minus_alt_32x32.png')
+    div.sb-slidebar.sb-left
+        h1 &nbsp;<a href="http://scrumblr.ca">scrumblr</a> by <a href="http://aliasaria.ca">aliasaria</a><br/><br/>
+    
+        h1 &nbsp;&nbsp;&nbsp;Options:
+        ul.sb-menu
+            li <a id="jiraSync" href="#">Sync with Jira</a>
+        
+        h1 &nbsp;&nbsp;&nbsp;List of boards:
+        ul#menuBoardList.sb-menu
+    div#sb-site
 
-	div.names
-		p connected:
-		//image#user-icon(src="/images/icons/cc/black/png/user_icon&16.png")
-		input#yourname-input
-		span.you-text\(you)
-		ul#names-ul
-	
+        div#slideopen
+            i.fa.fa-reorder
 
-//<div style="width: 980px; height: 450px; border: solid 2px; opacity:.1; margin-top: 100px"> this will be the backlog that only appears on drag or perhaps not at all</div>
+        div.board-outline
+            div#board
+                div#board-doodles
+                image#marker(src='/images/marker.png')
+                image#eraser(src='/images/eraser.png')
+            
+                table#board-table.board-table
+                    tr
+                        td#icon-col(width='1%')
+                            image#add-col.col-icon(width='20', height='20', src='/images/icons/iconic/raster/black/plus_alt_32x32.png')
+                            image#delete-col.col-icon(width='20', height='20', src='/images/icons/iconic/raster/black/minus_alt_32x32.png')
 
-//<script type="text/javascript">	  var _gaq = _gaq || []; _gaq.push(['_setAccount', 'UA-2069672-4']);  _gaq.push(['_trackPageview']);   (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true; ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })(); </script>
+        div.names
+            p connected:
+            input#yourname-input
+            span.you-text (you)
+            ul#names-ul
+

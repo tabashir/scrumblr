@@ -6,6 +6,8 @@ rsync.sh
 *.log
 .monitor
 node_modules/
+*.rdb
+*.out
 CristalIntense
 tmp
 conf
