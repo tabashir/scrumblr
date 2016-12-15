@@ -1,37 +1,39 @@
-!!! 5
+doctype html
 html(lang="en")
 	head
-		<!-- SCRIPTS -->
-		<script src="/lib/jquery-1.11.1.min.js"></script>
-		
-		<script src="/socket.io/socket.io.js"></script>
-
-		<!-- <script src="/lib/jquery-ui/js/jquery-ui-1.8.9.custom.min.js"></script> -->
-		<script src="/lib/jquery-ui-1.11.2/jquery-ui.min.js"></script>
-		
-		<script src="/lib/jquery.ui.touch-punch.min.js"></script>
-
-		<script src="/lib/jquery.jeditable.js"></script> 
-
-		<script src="/lib/slidebars.min.js"></script>
-
-		<script src="/script.js"></script> 
-
-		<script src="/lib/jquery.blockUI.js"></script> 
 
 		<!-- STYLES -->
-		<link rel="stylesheet" type="text/css" href="/css/style.css" />
-		<link rel="stylesheet" title="cardsize" href="/css/bigcards.css" type="text/css" media="all" />
-		<link rel="stylesheet" href="/css/slidebars.css" type="text/css" media="all" />
-		<link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css" media="all" />
+		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<link rel="stylesheet" title="cardsize" href="css/bigcards.css" type="text/css" media="all" />
+		<link rel="stylesheet" href="css/slidebars.css" type="text/css" media="all" />
+		<link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" media="all" />
 
 		<!-- FONTS -->
-		<!--link href='http://fonts.googleapis.com/css?family=Rock+Salt' rel='stylesheet' type='text/css'-->
-		<!--link href='http://fonts.googleapis.com/css?family=Covered+By+Your+Grace' rel='stylesheet' type='text/css'-->
+		<link href='//fonts.googleapis.com/css?family=Rock+Salt' rel='stylesheet' type='text/css'>
+		<link href='//fonts.googleapis.com/css?family=Covered+By+Your+Grace' rel='stylesheet' type='text/css'>
+
+		<!-- SCRIPTS -->
+
+		<!-- jQuery -->
+		<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+		<script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+		
+		<!-- External Scripts -->
+		<script src="/lib/jquery.ui.touch-punch.min.js"></script>
+		<script src="/lib/jquery.jeditable.js"></script> 
+		<script src="/lib/jquery.blockUI.js"></script> 
+		<script src="/lib/slidebars.min.js"></script>
+
+		<!-- Socket.IO -->
+		<script src="/socket.io/socket.io.js"></script>
+
+		<!-- ** My Script ** -->
+		<script src="script.js"></script>
 
 
 		title= locals.pageTitle
-	
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-	body!= body
+	body
+		block body
