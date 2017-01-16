@@ -1,7 +1,7 @@
 version: '2'
 
 services:
-  redis:
+  redis_scrumblr:
     restart: always
     image: redis:alpine
     ports:
@@ -13,9 +13,9 @@ services:
     restart: always
     image: scrumblr
     depends_on:
-    - redis
+    - redis_scrumblr
     links:
-    - "redis:redis"
+    - "redis_scrumblr:redis_scrumblr"
     ports:
     - "8124:8124"
     environment:

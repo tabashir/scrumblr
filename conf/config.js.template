@@ -1,7 +1,7 @@
 exports.additionalConfig = {
 
 		dbPort: 6379,
-		dbHost: 'redis',
+		dbHost: 'redis_scrumblr',
 
 		jiraUrl: 'https://jira.url/',
 		jiraUser: 'username',
