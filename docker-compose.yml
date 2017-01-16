@@ -1,0 +1,23 @@
+version: '2'
+
+services:
+  redis:
+    restart: always
+    image: redis:alpine
+    ports:
+    - "6379:6379"
+    volumes:
+    - /local/docker/volumes/scrumblr/data:/data
+
+  scrumblr:
+    restart: always
+    image: scrumblr
+    depends_on:
+    - redis
+    links:
+    - "redis:redis"
+    ports:
+    - "8124:8124"
+    environment:
+    - NPM_CONFIG_LOGLEVEL="debug"
+
