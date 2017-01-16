@@ -1,6 +1,8 @@
+var config = require ('../base-config'); 
+
 function getCard(id, text, x, y, rot, style, sticker) {
 	var ticketNumberRegex = new RegExp("^([A-Z]+-[0-9]+)", 'ig');
-	var linksEnabled = text.replace(ticketNumberRegex, "<a href=http://jira.corp.peer1.net/browse/$1>$1</a>");
+	var linksEnabled = text.replace(ticketNumberRegex, "<a href=" + config.jiraUrl + "/browse/$1>$1</a>");
 
 	var zIndex = Math.round(x + (y * 10));
 	if ('postit' == style) zIndex += 10000;

@@ -8,4 +8,4 @@ rsync.sh
 node_modules/
 CristalIntense
 tmp
-conf
+conf/config.js

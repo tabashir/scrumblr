@@ -1,40 +1,35 @@
-scrumblr
+Scrumblr
 ========
 
 what is it
 ----------
-[scrumblr](http://scrumblr.ca) is a web-based simulation of a physical agile kanban board that supports real-time collaboration. it is built using node.js, websockets (using socket.io), CSS3, and jquery. i hope you like it.
+Scrumblr is a web-based simulation of a physical agile kanban board that supports real-time collaboration. it is built using node.js, websockets (using socket.io), CSS3, and jquery.
 
-![Wellca Board](http://scrumblr.ca/images/screenshot.png)
-
-you can play with a demo here:
-
-- [scrumblr.ca/demo](http://scrumblr.ca/demo)
-
-And view a video here:
-
-- [Video Demo](http://www.youtube.com/watch?v=gAKxyOh1zPk)
-
-use scrumblr
+run scrumblr
 ------------
 
-if you'd like to use scrumblr go to [scrumblr.ca](http://scrumblr.ca). new boards are made simply by modifying the url to something unique. e.g. your team could use a shared board at: *http://scrumblr.ca/thisisoursecretboard23423242*
+You can run a standalone docker image by using docker-compose. Simply change the config as below, then run:
 
-alternatively, you can follow the instructions below to setup scrumblr yourself. it is very simple -- it just uses redis and node.js.
+```docker build -t scrumblr .```
+```docker-compose up```
 
-if you are a developer, please fork and submit changes/fixes.
+This uses the 'official' node image from the clever folks at:
+
+https://hub.docker.com/_/node/
+
+Alternatively, you can follow the instructions below to setup scrumblr yourself. it is very simple -- it just uses redis and node.js.
+
+configuration
+-------------
+
+Out of the box, scrumblr tries to connect to a redis on localhost default port (6379). If you need to change this, or need to run using docker, then copy the conf/config.js.template to conf/config.js and edit the dbHost and dbPort values. The above docker-compose formula expects a host of 'redis' so the template will work unedited.
+
+You can also set some jira settings in here which will allow you to 'import' cards with headings and titles matching a sprint set up in jira with the same name as the board.
 
 browser support
 ---------------
 
 scrumblr works on up to date chrome and firefox browsers. enable websockets for optimal performance. tested mainly on chrome for osx. this was not designed for browser support. use chrome for this app.
-
-design philosophy
------------------
-my goal was to avoid buttons and ui (almost everything is edit in place or draggable). everything should be discoverable (no "help"). the look is meant to be as close as possible to [Well.ca's](http://well.ca) real sprint board. see picture below. many of the decisions were to make the app look and feel as much as possible like well.ca's real sprint board -- you may find this annoying but we find it kinda funny.
-
-![Wellca Board](http://scrumblr.ca/images/DSC_7093.jpg)
-
 
 how to install and run on your own computer (linux/osx)
 -------------------------------------------------------

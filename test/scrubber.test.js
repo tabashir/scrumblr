@@ -1,6 +1,7 @@
 var should = require('should');
 var dash = require('lodash');
 var unit = require('../lib/scrubber');
+var config = require('../base-config');
 
 describe('MMM sanitize library', function () {
 
@@ -52,7 +53,7 @@ describe('MMM sanitize library', function () {
 	it('text that appears to start with jira link in it gets re-written', function (done) {
 		var toScrub = 'ALCHEMY-246 in here';
 		var scrubbed = unit.scrub(toScrub);
-		scrubbed.should.eql('<a href="https://jira.corp.peer1.net/browse/ALCHEMY-246">ALCHEMY-246</a><br> in here');
+		scrubbed.should.eql('<a href="' + config.jiraUrl + '/browse/ALCHEMY-246">ALCHEMY-246</a><br> in here');
 		done();
 	});
 

@@ -1,0 +1,11 @@
+exports.additionalConfig = {
+
+		dbPort: 6379,
+		dbHost: 'redis',
+
+		jiraUrl: 'https://jira.url/',
+		jiraUser: 'username',
+		jiraPass: 'password'
+}
+
+

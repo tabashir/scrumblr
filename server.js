@@ -522,7 +522,7 @@ function updateBoardWithIssues(room, issues, res) {
     		
             for (issueKey in issuesToAdd) {
             		var issue = issuesToAdd[issueKey];
-                    createCard(room, issue.key, "<a target='_blank' href='https://jira.corp.peer1.net/browse/" + issue.key + "'>" + issue.key + "</a> - " + issue.summary, 0, yPos, Math.random() * 10 - 5, 'white');
+                    createCard(room, issue.key, "<a target='_blank' href='" + config.jiraUrl + "/browse/" + issue.key + "'>" + issue.key + "</a> - " + issue.summary, 0, yPos, Math.random() * 10 - 5, 'white');
                     yPos += 110;
             }
 
