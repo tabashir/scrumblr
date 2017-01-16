@@ -1,13 +1,21 @@
 var fs = require('fs');
+var dash = require('lodash');
+var config = null;
 
-exports.database = {
+var baseConfig = {
 	type: 'redis',
 	prefix: '#scrumblr#',
 	dbPort: '6379',
-	dbHost: 'redis'
+	dbHost: '127.0.0.1',
+
+	jiraUrl: 'https://jira.example.com/',
+	jiraUser: 'username',
+	jiraPass: 'password'
 };
 
-
 if (fs.existsSync('./conf/config.js')) {
-	exports.config = require('./conf/config.js').additionalConfig;
+	var additionalConfig = require('./conf/config.js').additionalConfig;
+	config = dash.merge(baseConfig, additionalConfig);
 }
+
+module.exports = config;

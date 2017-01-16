@@ -5,7 +5,7 @@ var request = require('request');
 
 var async = require('async');
 
-var config = require('./base-config.js').config;
+var config = require('./base-config.js');
 
 var rooms = require('./lib/rooms.js');
 var data = require('./lib/data.js').db;
