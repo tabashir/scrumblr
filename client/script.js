@@ -174,8 +174,8 @@ function getCard(id, text, x, y, rot, style, sticker) {
 	var jiraLinkPattern = "<a href=" + jiraUrl + "/browse/$1>$1</a>";
 	var linksEnabled = text.replace(ticketNumberRegex, jiraLinkPattern);
 
-	var zIndex = Math.round(x + (y * 10));
-	if ('postit' == style) zIndex += 10000;
+	var zIndex = Math.round(x + (y * 2));
+	if ('postit' == style) zIndex += 100;
 	var cardFileName = style.replace(/^.* /, '') + '-card.png';
 
 	var h = '<div id="' + id + '" ' +
