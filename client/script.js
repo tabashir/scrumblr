@@ -838,7 +838,7 @@ $(function() {
 		minWidth: 700,
 		minHeight: 400,
 		maxWidth: 3200,
-		maxHeight: 1800,
+		maxHeight: 4000,
 	});
 
 	//A new scope for precalculating
